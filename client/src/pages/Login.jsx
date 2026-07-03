@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context/useAuth"; // Updated import path
+// import { useAuth } from "../context/useAuth"; // Updated import path
 import { Mail, Lock, Eye, EyeOff, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import styles from './total.module.css';
 
 function Login() {
-  const { login } = useAuth();
+  // const { login } = useAuth();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -53,7 +54,7 @@ function Login() {
 
     setIsLoading(true);
     try {
-      await login(formData.email, formData.password);
+      // await login(formData.email, formData.password);
       toast.success("Logged in successfully!", {
         description: "Welcome back to your dashboard.",
       });

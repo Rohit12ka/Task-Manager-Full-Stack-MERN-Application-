@@ -1,5 +1,7 @@
 
 import { Link } from 'react-router-dom';
+// import styles from './total.module.css';
+import styles from './total.module.css';
 
 // This is a placeholder component for Signup.jsx
 // You can expand this with actual form logic similar to Register.jsx
