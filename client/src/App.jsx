@@ -1,11 +1,13 @@
+// import React from 'react'
 
-// import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
+import HomePage from "./pages/HomePage"
 
 function App() {
   return (
-    // <HomePage />
-    <Login />
-  );
+    <div>
+      <HomePage />
+    </div>
+  )
 }
-export default App;
+
+export default App
