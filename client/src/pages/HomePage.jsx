@@ -4,6 +4,8 @@ import { useState } from "react";
 import TaskCard from "../components/TaskCard";
 import Barchart from "./Barchart";
 import Status from "../components/Status";
+// import Searchbar from "../components/Searchbar";
+import Filter from "../components/Filter";
 
 
 function HomePage() {
@@ -11,10 +13,10 @@ function HomePage() {
   const menuItems = ["Dashboard", "Tasks", "Projects", "Settings"];
   
   return (
-    <div  className=" min-h-screen w-screen h-flex overflow-hidden relative ">
+    <div  className="min-h-screen w-screen h-flex overflow-hidden relative ">
       <Navbar />
       <div className="flex ">
-        <aside className=" hidden md:flex flex-col text-white w-64  bg-amber-600 p-4 h-screen  flex-shrink-0">
+        <aside className=" hidden md:flex flex-col text-white w-64  bg-amber-600 p-4 h-screen shrink-0">
           <p >Main Menu</p>
           <ul className="flex flex-col gap-4 mt-5">
             {menuItems.map((item) => (
@@ -28,7 +30,7 @@ function HomePage() {
            </ul>
           </aside>
           
-         <div className=" md:p-8 space-y-6 bg-gray-300 flex-1 overflow-y-auto w-full pb-32  h-screen bg-gradient-to-br from-gray-700 to-sky-300 ">
+         <div className=" md:p-8 space-y-6 bg-gray-300 flex-1 overflow-y-auto w-full pb-32  h-screen bg-linear-to-br from-gray-700 to-sky-300 ">
            <h1 className=" text-3xl font-bold">Overview</h1>
            <p>Manage your tasks and track your daily progress.</p>
            <div className="grid grid-row-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -45,9 +47,11 @@ function HomePage() {
              <div className=" md:col-span-1 w-full mt-7 ">
                <Status />
              </div>
-           </div>
 
+           </div>
+           <Filter />
          </div>
+         
         
       </div>
     </div>

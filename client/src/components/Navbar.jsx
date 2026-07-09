@@ -1,6 +1,7 @@
 // import React from 'react'
-import { Moon, Sun,Bell,Search,LogOut   } from "lucide-react";
+import { Moon, Sun,Bell,LogOut   } from "lucide-react";
 import { useState } from "react";
+import Searchbar from "../components/Searchbar"
 
 function Navbar() {
            const [isDarkMode, setIsDarkMode] = useState(false);
@@ -13,12 +14,13 @@ function Navbar() {
         <h3 >Tasky</h3>
       </div>
 
-      <div className="w-full px-4 flex justify-center">
+      {/* <div className="w-full px-4 flex justify-center">
         <div className=" flex items-center  text-white relative  bg-gray-400">
             <Search className="w-4 h-4 absolute ml-4 hidden md:flex" />
           </div >
         <input type="text" placeholder="Search..." className="px-12 py-1  rounded-3xl w-90 text-white border border-gray hidden md:flex" />
-      </div>
+      </div> */}
+      <Searchbar />
 
       <div className="flex items-center gap-2 md:gap-4">
           <button onClick={() => setIsDarkMode(!isDarkMode)}className="p-2 text-gray-500 hover:bg-gray-50 rounded-xl transition-colors">
