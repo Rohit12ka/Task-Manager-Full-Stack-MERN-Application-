@@ -8,7 +8,7 @@ import Status from "../components/Status";
 
 function HomePage() {
   const [activeMenu, setActiveMenu] = useState(false);
-  const menuItems = ["Dashboard", "Tasks", "Projects", "Settings"]; // Define your menu labels here
+  const menuItems = ["Dashboard", "Tasks", "Projects", "Settings"];
   
   return (
     <div  className=" min-h-screen w-screen h-flex overflow-hidden relative ">

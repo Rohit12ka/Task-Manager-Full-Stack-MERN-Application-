@@ -35,10 +35,9 @@ function Status () {
               </Pie>
             </PieChart>
           </ResponsiveContainer>
-          
-          {/* Center Text - Centering performance optimized via CSS flex inside absolute */}
+    
           <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none">
-            <span className="text-2xl font-extrabold text-gray-800 leading-none">85%</span>
+            <span className="text-2xl font-extrabold text-gray-800 leading-none">80%</span>
             <span className="text-[9px] font-bold text-gray-400 tracking-wider mt-1">EFFICIENCY</span>
           </div>
         </div>
