@@ -1,24 +1,40 @@
 import { useState } from 'react';
 import { X, Type, AlignLeft, Calendar, Flag, Check } from 'lucide-react';
 
-function CreateTask({ onClose }) {
+function CreateTask({ onAddTask }) {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [dueDate, setDueDate] = useState('2026-07-10');
   const [priority, setPriority] = useState('Medium');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!title.trim()) return alert("Title is required!");
+
+    const newTask = {
+      id: Date.now(),
+      title,
+      description,
+      dueDate,
+      priority
+    };
+    onAddTask(newTask);
+
+    setTitle('');
+    setDescription('');
+  };
 
   return (
-    /* 1. MAIN BACKGROUND: Yahan onClick={onClose} lagaya taaki side me click karne par modal band ho */
     <div 
       onClick={onClose} 
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
     >
-      
-      {/* 2. MODAL CARD BOX: Yahan onClick={(e) => e.stopPropagation()} lagaya 
-          taaki form ke andar click karne par modal band NA ho */}
+
       <div 
         onClick={(e) => e.stopPropagation()} 
         className="w-full max-w-lg bg-[#fbf9f4] rounded-3xl p-8 shadow-2xl border border-gray-200/50 mx-4 relative"
       >
         
-        {/* Header */}
+
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-xl font-bold text-gray-800 tracking-tight">Create New Task</h2>
           <button 
@@ -29,7 +45,7 @@ function CreateTask({ onClose }) {
           </button>
         </div>
 
-        {/* Form */}
+
         <form 
           onSubmit={(e) => { 
             e.preventDefault(); 
@@ -49,7 +65,7 @@ function CreateTask({ onClose }) {
             />
           </div>
 
-          {/* Description */}
+
           <div>
             <label className="flex items-center gap-1.5 text-xs font-bold text-gray-400 tracking-wider uppercase mb-2">
               <AlignLeft size={14} /> Description
@@ -61,7 +77,7 @@ function CreateTask({ onClose }) {
             />
           </div>
 
-          {/* Due Date & Priority */}
+ 
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="flex items-center gap-1.5 text-xs font-bold text-gray-400 tracking-wider uppercase mb-2">
@@ -97,7 +113,7 @@ function CreateTask({ onClose }) {
             </div>
           </div>
 
-          {/* Bottom Buttons */}
+    
           <div className="flex justify-end items-center gap-4 pt-4 border-t border-gray-200/60 mt-6">
             <button 
               type="button"
