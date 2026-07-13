@@ -49,13 +49,10 @@
 // export default ViewToggle
 import { useState } from 'react';
 import { LayoutGrid, List, Plus } from 'lucide-react';
-// Sahi path check kar lena aapne folder structure ke hisab se
-import CreateTask from '../pages/CreateTask'; 
 
-function ViewToggle() {
+// Props में 'onAddTaskClick' को रिसीव किया जो HomePage.jsx से आ रहा है
+function ViewToggle({ onAddTaskClick }) {
   const [view, setView] = useState('grid');
-  // 1. Modal open/close karne ke liye switch state active ki
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="flex items-center bg-transparent gap-2 p-2 relative">
@@ -63,6 +60,7 @@ function ViewToggle() {
       <div className="flex items-center gap-1 p-1.5 bg-gray-200/60 border border-gray-300/40 rounded-2xl">
         {/* Grid View Button */}
         <button
+          type="button"
           onClick={() => setView('grid')}
           className={`p-1 rounded-xl transition-all duration-200 ${
             view === 'grid'
@@ -75,6 +73,7 @@ function ViewToggle() {
 
         {/* List View Button */}
         <button
+          type="button"
           onClick={() => setView('list')}
           className={`p-1 rounded-xl transition-all duration-200 ${
             view === 'list'
@@ -86,19 +85,15 @@ function ViewToggle() {
         </button>
       </div>
 
-      {/* 2. Add Task Button: Iske click par state true ho jayegi */}
+      {/* Add Task Button: इसके क्लिक पर अब HomePage का फंक्शन चलेगा और मॉडल खुल जाएगा */}
       <button 
-        onClick={() => setIsModalOpen(true)}
+        type="button"
+        onClick={onAddTaskClick} // यहाँ प्रोप्स वाला फंक्शन कॉल हो रहा है
         className="flex items-center gap-2 bg-[#0052cc] hover:bg-[#0043a4] text-white px-3 py-2 rounded-2xl font-semibold tracking-wide transition-colors shadow-sm"
       >
         <Plus size={22} strokeWidth={3} />
         <span>Add Task</span>
       </button>
-
-      {/* 3. INTEGRATION: Agar isModalOpen true hai to pop-up khulega */}
-      {isModalOpen && (
-        <CreateTask onClose={() => setIsModalOpen(false)} />
-      )}
 
     </div>
   );

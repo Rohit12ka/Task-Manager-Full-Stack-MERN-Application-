@@ -1,8 +1,8 @@
 // import React from 'react';
 
-export default function TaskCard({ task }) {
+ function TasksCard({ task }) {
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-sm flex flex-col justify-between gap-4">
+    <div className="bg-black p-5 rounded-2xl shadow-sm flex flex-col justify-between gap-4">
       <div>
         <div className="flex justify-between items-start">
           <h3 className="font-bold text-gray-900 text-lg">{task.title}</h3>
@@ -18,3 +18,4 @@ export default function TaskCard({ task }) {
     </div>
   );
 }
+export default TasksCard

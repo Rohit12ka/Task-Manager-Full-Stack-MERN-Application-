@@ -39,78 +39,142 @@
 // }
 
 // export default Filter 
+// import { useState } from "react";
+// import Searchbar from "../components/Searchbar";
+// import Dropdown from "./Dropdown";
+// import TaskCard from "./TaskCard"; // TaskCard को यहाँ इम्पोर्ट किया
+
+// // Parent (App.jsx) से 'tasks' लिस्ट प्रोप्स के जरिए ली
+// function Filter({ tasks = [] }) {
+//   const [activeFilter, setActiveFilter] = useState("All");
+
+//   // Tabs (All/Pending/Completed) के आधार पर डेटा फ़िल्टर करने का लॉजिक
+//   const filteredTasks = tasks.filter((task) => {
+//     if (activeFilter === "Pending") return task.status === "Pending";
+//     if (activeFilter === "Completed") return task.status === "Completed";
+//     return true; // 'All' सिलेक्ट होने पर सारे टास्क दिखेंगे
+//   });
+
+  
+
+//   return (
+//     <div className="flex flex-col gap-6 w-full text-black bg-[#fcd34d] p-5 rounded-3xl border border-gray-600/30 shadow-lg">
+      
+//       {/* Top Filter Header Bar */}
+//       <div className="flex flex-wrap items-center justify-between gap-4 w-full">
+//         {/* Navigation Tabs */}
+//         <div className="flex gap-1 bg-black/5 p-1 rounded-full">
+//           {["All", "Pending", "Completed"].map((tab) => (
+//             <button 
+//               key={tab}
+//               type="button" 
+//               onClick={() => setActiveFilter(tab)}
+//               className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+//                 activeFilter === tab 
+//                   ? "bg-white text-black shadow-sm" 
+//                   : "text-gray-600 hover:text-black"
+//               }`}
+//             >
+//               {tab}
+//             </button>
+//           ))}
+//         </div>
+
+//         {/* Search & Sort Actions */}
+//         <div className="flex items-center gap-3">
+//           <Searchbar />
+//           <Dropdown />
+//         </div>
+//       </div>
+
+//       {/* --- TASK LIST CONTAINER (फिग्मा स्टाइल) --- */}
+//       {/* यहाँ आपके नए टास्क कार्ड एक के नीचे एक (या ग्रिड में) सेव होकर दिखेंगे */}
+//       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3.5 w-full mt-2">
+//         {filteredTasks.length === 0 ? (
+//           <div className="text-center py-12 bg-white/40 rounded-2xl border border-dashed border-black/10 col-span-full">
+//             <p className="text-gray-700 font-medium text-sm">
+//               No tasks found in "{activeFilter}" tab.
+//             </p>
+//           </div>
+//         ) : (
+//           filteredTasks.map((task) => (
+//             <TaskCard key={task.id} task={task} />
+//           ))
+//         )}
+//       </div>
+      
+//     </div>
+//   );
+// }
+
+// export default Filter;
 import { useState } from "react";
 import Searchbar from "../components/Searchbar";
 import Dropdown from "./Dropdown";
-import TaskCard from "./TaskCard"; // TaskCard को इम्पोर्ट किया
+import TaskCard from "./TaskCard"; 
 
-// Props में पैरेंट से 'tasks' रिसीव कर रहे हैं
-function Filter({ tasks = [] }) {
+// Props में पैरेंट (HomePage) से आ रहे फंक्शंस onToggleStatus और onDeleteTask को जोड़ा
+function Filter({ tasks = [], onToggleStatus, onDeleteTask }) {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  // Tabs के हिसाब से टास्क फ़िल्टर करने का लॉजिक
+  // Tabs (All/Pending/Completed) के आधार पर डेटा फ़िल्टर करने का लॉजिक
   const filteredTasks = tasks.filter((task) => {
     if (activeFilter === "Pending") return task.status === "Pending";
     if (activeFilter === "Completed") return task.status === "Completed";
-    return true; // 'All' के लिए
+    return true; // 'All' सिलेक्ट होने पर सारे टास्क दिखेंगे
   });
 
   return (
-    <div className="flex flex-col gap-6 w-full text-black bg-yellow-200 p-5 rounded-2xl border border-gray-600 shadow-lg">
+    <div className="flex flex-col gap-6 w-full text-black bg-[#fcd34d] p-5 rounded-3xl border border-gray-600/30 shadow-lg">
       
-      {/* Top Header & Filters Area */}
+      {/* Top Filter Header Bar */}
       <div className="flex flex-wrap items-center justify-between gap-4 w-full">
-        <div className="flex gap-2">
-          <button 
-            type="button" 
-            onClick={() => setActiveFilter("All")}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-              activeFilter === "All" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black"
-            }`}
-          >
-            All
-          </button>
-          <button 
-            type="button" 
-            onClick={() => setActiveFilter("Pending")}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-              activeFilter === "Pending" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black"
-            }`}
-          >
-            Pending
-          </button>
-          <button 
-            type="button" 
-            onClick={() => setActiveFilter("Completed")}
-            className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
-              activeFilter === "Completed" ? "bg-white text-black shadow-sm" : "text-gray-500 hover:text-black"
-            }`}
-          >
-            Completed
-          </button>
+        {/* Navigation Tabs */}
+        <div className="flex gap-1 bg-black/5 p-1 rounded-full">
+          {["All", "Pending", "Completed"].map((tab) => (
+            <button 
+              key={tab}
+              type="button" 
+              onClick={() => setActiveFilter(tab)}
+              className={`px-4 py-1.5 rounded-full text-sm font-semibold transition-all ${
+                activeFilter === tab 
+                  ? "bg-white text-black shadow-sm" 
+                  : "text-gray-600 hover:text-black"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
-        {/* Search and Dropdown Section */}
-        <div className="flex items-center gap-4">
+        {/* Search & Sort Actions */}
+        <div className="flex items-center gap-3">
           <Searchbar />
           <Dropdown />
         </div>
       </div>
 
-      {/* --- CARDS CONTAINER GRID --- */}
-      {/* यहाँ आपके डायनामिक कार्ड्स रेंडर होकर सेव होंगे */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full mt-2">
+      {/* --- TASK LIST CONTAINER --- */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3.5 w-full mt-2">
         {filteredTasks.length === 0 ? (
-          <p className="text-gray-600 text-center col-span-full py-6 font-medium">
-            No tasks found in "{activeFilter}".
-          </p>
+          <div className="text-center py-12 bg-white/40 rounded-2xl border border-dashed border-black/10 col-span-full">
+            <p className="text-gray-700 font-medium text-sm">
+              No tasks found in "{activeFilter}" tab.
+            </p>
+          </div>
         ) : (
           filteredTasks.map((task) => (
-            <TaskCard key={task.id} task={task} />
+            // यहाँ TaskCard में दोनों फंक्शंस को पास कर दिया
+            <TaskCard 
+              key={task.id} 
+              task={task} 
+              onToggleStatus={onToggleStatus}
+              onDeleteTask={onDeleteTask}
+            />
           ))
         )}
       </div>
-
+      
     </div>
   );
 }
