@@ -74,9 +74,6 @@ export default function TaskCard({ task, onToggleStatus, onDeleteTask }) {
   return (
     <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between gap-4 hover:shadow-md transition-shadow w-full text-black">
       <div className="flex items-start gap-4">
-        
-        {/* --- 1. LEFT SIDE CIRCLE CLICK BUTTON --- */}
-        {/* div को बटन में बदल दिया ताकि क्लिक अच्छे से काम करे */}
         <button
           type="button"
           onClick={() => onToggleStatus && onToggleStatus(task.id)} // क्लिक पर स्टेटस बदलेगा

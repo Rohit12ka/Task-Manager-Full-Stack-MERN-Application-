@@ -1,16 +1,6 @@
-// import React from 'react'
-import {
-  LayoutDashboard,
-  CheckSquare,
-  FolderGit2,
-  Settings,
-} from "lucide-react";
-// import { useState } from "react";
-// import TaskCard from "../components/TaskCard";
-
+import {LayoutDashboard,CheckSquare,FolderGit2,Settings,} from "lucide-react";
 function Sidebar() {
-  //  const [activeMenu, setActiveMenu] = useState(false);
-  // const menuItems = ["Dashboard", "Tasks", "Projects", "Settings"];
+  
   const navItems = [
     { name: "Dashboard", icon: LayoutDashboard, href: "/dashboard" },
     { name: "Tasks", icon: CheckSquare, href: "/tasks" },

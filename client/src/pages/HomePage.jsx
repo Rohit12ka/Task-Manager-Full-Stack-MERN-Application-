@@ -90,18 +90,12 @@ function HomePage() {
       <Navbar />
       <div className="flex ">
         <Sidebar />
-        <div className=" md:p-8 space-y-6 bg-gray-300 flex-1 overflow-y-auto w-full pb-32 h-screen bg-linear-to-br from-gray-700 to-sky-300 ">
-          
+        <div className=" md:p-8 space-y-6 bg-gray-300 flex-1 overflow-y-auto w-full pb-32 h-screen bg-linear-to-br from-blue-400 to-sky-300 ">  
           <h1 className=" text-3xl font-bold">Overview</h1>
           <div className="flex justify-between">
             <p>Manage your tasks and track your daily progress.</p>
-            
-            {/* यहाँ ViewToggle को फंक्शन पास किया ताकि उसके अंदर का बटन modal खोल सके */}
             <ViewToggle onAddTaskClick={() => setIsModalOpen(true)} />
           </div>
-
-          {/* --- 4 REAL-TIME COUNTER STATS CARDS --- */}
-          {/* ये सिर्फ टास्क का काउंट दिखाएंगे, नया टास्क ऐड होने पर नए कार्ड्स नीचे फिल्टर में बनेंगे */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* 1. Total Tasks */}
@@ -123,8 +117,6 @@ function HomePage() {
               </div>
               <p className="text-[11px] text-amber-400 mt-4">In progress or waiting</p>
             </div>
-
-            {/* 3. Completed Tasks */}
             <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700/40 shadow-sm flex flex-col justify-between text-white">
               <div>
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Completed Tasks</p>
@@ -134,8 +126,6 @@ function HomePage() {
               </div>
               <p className="text-[11px] text-green-400 mt-4">Successfully done</p>
             </div>
-
-            {/* 4. Overdue Tasks */}
             <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700/40 shadow-sm flex flex-col justify-between text-white">
               <div>
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-wider">Overdue Tasks</p>
@@ -147,8 +137,6 @@ function HomePage() {
             </div>
 
           </div>
-
-          {/* चार्ट और स्टेटस सेक्शन */}
           <div className="pb-5 grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-stretch"> 
             <div className="md:col-span-2 w-full "> 
               <Barchart />
@@ -157,16 +145,10 @@ function HomePage() {
               <Status />
             </div>
           </div>
-
-          {/* पीले रंग वाला फिल्टर और लिस्ट कंटेनर */}
-          {/* यहाँ 'tasks' की लिस्ट पास की ताकि नए कार्ड्स इसके अंदर दिखाई दें */}
           <Filter tasks={tasks} />
 
         </div>
       </div>
-
-      {/* --- Create Task Modal Window --- */}
-      {/* जब isModalOpen true होगा, तभी फॉर्म स्क्रीन पर पॉप-अप होगा */}
       {isModalOpen && (
         <CreateTask 
           onAddTask={handleAddTask} 
