@@ -1,56 +1,4 @@
-// // import React from 'react'
-// import Navbar from "../components/Navbar";
-// // import { useState } from "react";
-// import TaskCard from "../components/TaskCard";
-// import Barchart from "./Barchart";
-// import Status from "../components/Status";
-// // import Searchbar from "../components/Searchbar";
-// import Filter from "../components/Filter";
-// import Sidebar from "../components/Sidebar";
-// // import TaskDetail from "../components/Taskdetail";
-// import ViewToggle from "../components/ViewToggle";
 
-
-// function HomePage() {
-//   return (
-//     <div  className="min-h-screen w-screen h-flex overflow-hidden relative ">
-//       <Navbar />
-//       <div className="flex ">
-//         <Sidebar />
-//          <div className=" md:p-8 space-y-6 bg-gray-300 flex-1 overflow-y-auto w-full pb-32  h-screen bg-linear-to-br from-gray-700 to-sky-300 ">
-//            <h1 className=" text-3xl font-bold">Overview</h1>
-//            <div className="flex justify-between">
-//             <p>Manage your tasks and track your daily progress.</p>
-//             <ViewToggle />
-//            </div>
-//            <div className="grid grid-row-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-//             <TaskCard  />
-//             <TaskCard  />
-//             <TaskCard  />
-//             <TaskCard  />
-//            </div>
-
-//            <div className ="pb-5  grid  grid-cols-1 md:grid-cols-3 gap-8 w-full items-stretch"> 
-//              <div className="md:col-span-2 w-full "> 
-//                <Barchart />
-//              </div>
-//              <div className=" md:col-span-1 w-full mt-7 ">
-//                <Status />
-//              </div>
-
-//            </div>
-//            <Filter />
-//            {/* <TaskDetail /> */}
-//          </div>
-         
-        
-//       </div>
-//     </div>
-//   )
-// }
-
-// export default HomePage
-// 1. useState को अनकमेंट करके इम्पोर्ट किया
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import Barchart from "./Barchart";
@@ -61,20 +9,14 @@ import ViewToggle from "../components/ViewToggle";
 import CreateTask from "../pages/CreateTask";
 
 function HomePage() {
-  // पूरे प्रोजेक्ट की मेन स्टेट (तिजोरी) जहाँ सारा डेटा रहेगा
   const [tasks, setTasks] = useState([]); 
-  
-  // Modal (CreateTask फॉर्म) को खोलने और बंद करने की स्टेट
   const [isModalOpen, setIsModalOpen] = useState(false); 
-
-  // नया टास्क एरे में जोड़ने के लिए फंक्शन
   const handleAddTask = (newTask) => {
-    setTasks([newTask, ...tasks]); // नया टास्क लिस्ट में सबसे ऊपर जुड़ जाएगा
+    setTasks([newTask, ...tasks]); 
   };
   const handleToggleTaskStatus = (taskId) => {
-    setTasks(tasks.map(task => 
-      task.id === taskId 
-        ? { ...task, status: task.status === 'Completed' ? 'Pending' : 'Completed' }
+    setTasks(tasks.map(task => task.id === taskId 
+      ? { ...task, status: task.status === 'Completed' ? 'Pending' : 'Completed' }
         : task
     ));
   };
@@ -85,7 +27,6 @@ function HomePage() {
   };
 
   return (
-    
     <div className="min-h-screen w-screen h-flex overflow-hidden relative ">
       <Navbar />
       <div className="flex ">
@@ -97,7 +38,6 @@ function HomePage() {
             <ViewToggle onAddTaskClick={() => setIsModalOpen(true)} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            
             {/* 1. Total Tasks */}
             <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700/40 shadow-sm flex flex-col justify-between text-white">
               <div>
@@ -106,7 +46,6 @@ function HomePage() {
               </div>
               <p className="text-[11px] text-blue-400 mt-4">All structural tasks</p>
             </div>
-
             {/* 2. Pending Tasks */}
             <div className="bg-[#1e293b] p-6 rounded-2xl border border-gray-700/40 shadow-sm flex flex-col justify-between text-white">
               <div>
@@ -135,7 +74,6 @@ function HomePage() {
               </div>
               <p className="text-[11px] text-red-400 mt-4">Passed due date</p>
             </div>
-
           </div>
           <div className="pb-5 grid grid-cols-1 md:grid-cols-3 gap-8 w-full items-stretch"> 
             <div className="md:col-span-2 w-full "> 
@@ -146,7 +84,6 @@ function HomePage() {
             </div>
           </div>
           <Filter tasks={tasks} />
-
         </div>
       </div>
       {isModalOpen && (
@@ -163,5 +100,4 @@ function HomePage() {
     </div>
   );
 }
-
 export default HomePage;

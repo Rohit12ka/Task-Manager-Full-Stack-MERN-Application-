@@ -21,7 +21,6 @@ function Barchart() {
           LAST 7 DAYS <span className="text-[10px]">▼</span>
         </button>
       </div>
-      
       {/* Chart */}
       <div className="h-50 w-full">
         <ResponsiveContainer width="100%" height="100%">
