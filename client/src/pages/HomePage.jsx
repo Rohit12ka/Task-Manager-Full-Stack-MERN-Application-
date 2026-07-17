@@ -86,17 +86,7 @@ function HomePage() {
           <Filter tasks={tasks} />
         </div>
       </div>
-      {/* {isModalOpen && (
-        <CreateTask 
-          onAddTask={handleAddTask} 
-          onClose={() => setIsModalOpen(false)} 
-        />
-      )}
-      <Filter 
-      tasks={tasks} 
-      onToggleStatus={handleToggleTaskStatus}
-      onDeleteTask={handleDeleteTask}
-    /> */}
+    
     </div>
   );
 }

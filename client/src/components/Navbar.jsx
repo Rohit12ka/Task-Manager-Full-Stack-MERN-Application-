@@ -34,7 +34,7 @@ function Navbar() {
         
         <div className="rounded-lg whitespace-nowrap">
           <button className="flex items-center w-full px-4 py-1.5  text-sm text-red-600 hover:bg-red-50 rounded-xl">
-                <LogOut className="w-4 h-4 flex" />
+                <LogOut className="w-4 h-4 flex bg-gray-700" />
                   Sign out
                 </button>
         </div>
