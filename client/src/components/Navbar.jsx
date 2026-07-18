@@ -13,13 +13,6 @@ function Navbar() {
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="logo" className="h-8 w-8 mr-2" />
         <h3 >Tasky</h3>
       </div>
-
-      {/* <div className="w-full px-4 flex justify-center">
-        <div className=" flex items-center  text-white relative  bg-gray-400">
-            <Search className="w-4 h-4 absolute ml-4 hidden md:flex" />
-          </div >
-        <input type="text" placeholder="Search..." className="px-12 py-1  rounded-3xl w-90 text-white border border-gray hidden md:flex" />
-      </div> */}
       <Searchbar />
 
       <div className="flex items-center gap-2 md:gap-4">
