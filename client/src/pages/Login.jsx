@@ -21,6 +21,10 @@ function Login() {
     // API call here
     // axios.post("http://localhost:5000/login", formData)
   };
+  const handleLogin = () => {
+  localStorage.setItem("token", "user_logged_in");
+  window.location.href = "/dashboard";
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
