@@ -5,6 +5,7 @@ import { LayoutGrid, List, Plus } from 'lucide-react';
 // Props में 'onAddTaskClick' को रिसीव किया जो HomePage.jsx से आ रहा है
 function ViewToggle({ onAddTaskClick }) {
   const [view, setView] = useState('grid');
+  
 
   return (
     <div className="flex items-center bg-transparent gap-2 p-2 relative">

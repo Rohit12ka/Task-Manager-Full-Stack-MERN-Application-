@@ -11,6 +11,8 @@ import CreateTask from "../pages/CreateTask";
 function HomePage() {
   const [tasks, setTasks] = useState([]); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
+    // const CreateTask = () => {setIsModalOpen(true)};
+
   const handleAddTask = (newTask) => {
     setTasks([newTask, ...tasks]); 
   };
@@ -22,9 +24,9 @@ function HomePage() {
   };
 
   // 2. टास्क को लिस्ट से डिलीट करने का फ़ंक्शन
-  const handleDeleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId));
-  };
+  // const handleDeleteTask = (taskId) => {
+  //   setTasks(tasks.filter(task => task.id !== taskId));
+  // };
 
   return (
     <div className="min-h-screen w-screen h-flex overflow-hidden relative ">
@@ -35,7 +37,8 @@ function HomePage() {
           <h1 className=" text-3xl font-bold">Overview</h1>
           <div className="flex justify-between">
             <p>Manage your tasks and track your daily progress.</p>
-            <ViewToggle onAddTaskClick={() => setIsModalOpen(true)} />
+            <ViewToggle onAddTaskClick={() => CreateTask(true)} />
+            
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* 1. Total Tasks */}

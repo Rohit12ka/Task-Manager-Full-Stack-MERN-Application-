@@ -21,10 +21,10 @@ function Login() {
     // API call here
     // axios.post("http://localhost:5000/login", formData)
   };
-  const handleLogin = () => {
-  localStorage.setItem("token", "user_logged_in");
-  window.location.href = "/dashboard";
-};
+//   const handleLogin = () => {
+//   localStorage.setItem("token", "user_logged_in");
+//   window.location.href = "/dashboard";
+// };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -32,9 +32,7 @@ function Login() {
         <h2 className="text-3xl font-bold text-center mb-6">
           Login
         </h2>
-
         <form onSubmit={handleSubmit} className="space-y-4">
-
           <div>
             <label className="block mb-2 font-medium">
               Email
