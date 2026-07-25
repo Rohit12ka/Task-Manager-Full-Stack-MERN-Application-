@@ -1,15 +1,13 @@
-import { Navigate } from "react-router-dom"; // Corrected import for react-router-dom
-import { useAuth } from "../context/useAuth"; // Updated import path
+import express from "express";
+import userAuthentication from "../middleware/userAuthentication.js";
 
-// Removed TypeScript type annotation
-export const ProtectedRoute = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuth();
-  
-  if (isLoading) return null; // Or a loading spinner
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return <>{children}</>;
-};
+const router = express.Router();
+
+router.get("/profile", userAuthentication, (req, res) => {
+  res.json({
+    success: true,
+    userId: req.user.id,
+  });
+});
+
+export default router;
