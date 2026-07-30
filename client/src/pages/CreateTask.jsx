@@ -76,7 +76,6 @@ function CreateTask({ onClose, onAddTask }) {
             />
           </div>
 
-          
           <div>
             <label className="flex items-center gap-1.5 text-xs font-bold text-gray-400 tracking-wider uppercase mb-2">
               <AlignLeft size={14} /> Description

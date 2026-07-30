@@ -1,4 +1,13 @@
-import { X, Calendar, Flag, Clock, User, CheckCircle2, Edit2, Trash2 } from "lucide-react";
+import {
+  X,
+  Calendar,
+  Flag,
+  Clock,
+  User,
+  CheckCircle2,
+  Edit2,
+  Trash2,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 
@@ -56,34 +65,37 @@ function TaskDetail({ task, isOpen, onClose, onEdit, onDelete, onToggle }) {
 
             {/* Scrollable Content Body */}
             <div className="flex-1 p-6 space-y-8 overflow-y-auto">
-              
               {/* Task Status & Title Info */}
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => onToggle(task.id)}
                     className={`w-8 h-8 rounded-xl border-2 flex items-center justify-center transition-all ${
-                      task.completed 
-                        ? "bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-100" 
+                      task.completed
+                        ? "bg-indigo-600 border-indigo-600 text-white shadow-lg shadow-indigo-100"
                         : "border-gray-200 text-transparent hover:border-indigo-400"
                     }`}
                   >
                     <CheckCircle2 className="w-5 h-5" />
                   </button>
-                  <span className={`text-xs font-bold uppercase tracking-widest ${
-                    task.completed ? "text-indigo-600" : "text-gray-400"
-                  }`}>
+                  <span
+                    className={`text-xs font-bold uppercase tracking-widest ${
+                      task.completed ? "text-indigo-600" : "text-gray-400"
+                    }`}
+                  >
                     {task.completed ? "Completed" : "In Progress"}
                   </span>
                 </div>
-                
+
                 {/* Fixed `cn` dependency with Standard Template Strings */}
-                <h1 className={`text-3xl font-bold text-gray-900 leading-tight wrap-break-words ${
-                  task.completed ? "line-through text-gray-400" : ""
-                }`}>
+                <h1
+                  className={`text-3xl font-bold text-gray-900 leading-tight wrap-break-words ${
+                    task.completed ? "line-through text-gray-400" : ""
+                  }`}
+                >
                   {task.title}
                 </h1>
-                
+
                 <p className="text-gray-500 text-base leading-relaxed wrap-break-words">
                   {task.description || "No description provided."}
                 </p>
@@ -92,9 +104,12 @@ function TaskDetail({ task, isOpen, onClose, onEdit, onDelete, onToggle }) {
               {/* Meta Grid Section */}
               <div className="grid grid-cols-2 gap-6 bg-gray-50/50 p-4 rounded-2xl border border-gray-100">
                 <InfoItem icon={Flag} label="Priority">
-                  <span className={`inline-block px-3 py-1 text-xs font-bold rounded-full border uppercase tracking-wider ${
-                    priorityColors[task.priority] || "bg-gray-50 text-gray-600 border-gray-100"
-                  }`}>
+                  <span
+                    className={`inline-block px-3 py-1 text-xs font-bold rounded-full border uppercase tracking-wider ${
+                      priorityColors[task.priority] ||
+                      "bg-gray-50 text-gray-600 border-gray-100"
+                    }`}
+                  >
                     {task.priority}
                   </span>
                 </InfoItem>
@@ -102,7 +117,9 @@ function TaskDetail({ task, isOpen, onClose, onEdit, onDelete, onToggle }) {
                 <InfoItem icon={Calendar} label="Due Date">
                   <span className="flex items-center gap-1.5">
                     <Clock className="w-4 h-4 text-gray-400" />
-                    {task.dueDate ? format(new Date(task.dueDate), "MMM d, yyyy") : "No due date"}
+                    {task.dueDate
+                      ? format(new Date(task.dueDate), "MMM d, yyyy")
+                      : "No due date"}
                   </span>
                 </InfoItem>
 
@@ -111,12 +128,16 @@ function TaskDetail({ task, isOpen, onClose, onEdit, onDelete, onToggle }) {
                     <span className="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-[10px] font-bold text-indigo-600">
                       JD
                     </span>
-                    <span className="text-sm font-bold text-gray-700">John Doe (Me)</span>
+                    <span className="text-sm font-bold text-gray-700">
+                      John Doe (Me)
+                    </span>
                   </span>
                 </InfoItem>
 
                 <InfoItem icon={Clock} label="Created">
-                  <span className="text-sm font-bold text-gray-700">June 20, 2026</span>
+                  <span className="text-sm font-bold text-gray-700">
+                    June 20, 2026
+                  </span>
                 </InfoItem>
               </div>
             </div>
