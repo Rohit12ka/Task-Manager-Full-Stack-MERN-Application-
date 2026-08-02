@@ -8,7 +8,7 @@ function Navbar() {
           //  const { user, logout } = useAuth();
   return (
    
-     <nav className="h-16 overflow-hidden bg-gray-800 text-white border-b shadow-lg border-gray-100 flex items-center justify-between px-4 md:px-6  text-xl font-family: 'Poppins', sans-serif;">
+     <nav className="h-16 overflow-hidden bg-gray-700 text-white border-b shadow-lg border-gray-100 flex items-center justify-between px-4 md:px-6  text-xl font-family: 'Poppins', sans-serif;">
       <div className="flex items-center">
         <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="logo" className="h-8 w-8 mr-2" />
         <h3 >Tasky</h3>
