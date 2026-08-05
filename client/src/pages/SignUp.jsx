@@ -39,13 +39,9 @@ const Signup = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-r from-blue-600 via-purple-600 to-indigo-700 p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
-        <h2 className="text-3xl font-bold text-center mb-2">
-          Create Account
-        </h2>
+        <h2 className="text-3xl font-bold text-center mb-2">Create Account</h2>
 
-        <p className="text-gray-500 text-center mb-6">
-          Sign up to continue
-        </p>
+        <p className="text-gray-500 text-center mb-6">Sign up to continue</p>
 
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Name */}
@@ -95,11 +91,7 @@ const Signup = () => {
               className="absolute right-3 top-3"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? (
-                <EyeOff size={20} />
-              ) : (
-                <Eye size={20} />
-              )}
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
 
@@ -120,15 +112,9 @@ const Signup = () => {
             <button
               type="button"
               className="absolute right-3 top-3"
-              onClick={() =>
-                setShowConfirmPassword(!showConfirmPassword)
-              }
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             >
-              {showConfirmPassword ? (
-                <EyeOff size={20} />
-              ) : (
-                <Eye size={20} />
-              )}
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
             </button>
           </div>
 
@@ -154,5 +140,4 @@ const Signup = () => {
     </div>
   );
 };
-
 export default Signup;
