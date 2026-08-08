@@ -58,10 +58,7 @@ function verifyRefreshToken(token) {
   return jwt.verify(token, REFRESH_SECRET);
 }
 
-/**
- * Express middleware to protect routes
- * Usage: app.get('/profile', authenticate, handler)
- */
+
 function authenticate(req, res, next) {
   try {
     const authHeader = req.headers.authorization;
