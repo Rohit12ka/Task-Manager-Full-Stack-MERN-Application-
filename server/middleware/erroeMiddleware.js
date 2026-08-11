@@ -1,35 +1,14 @@
-// middleware/authMiddleware.js
+// middleware/errorMiddleware.js
 
-const jwt = require("jsonwebtoken");
+const errorMiddleware = (err, req, res, next) => {
+  console.error(err.stack);
 
-const authMiddleware = (req, res, next) => {
-  try {
-    // Get token from Authorization header
-    const authHeader = req.headers.authorization;
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
-      return res.status(401).json({
-        success: false,
-        message: "Authentication token is required",
-      });
-    }
-
-    // Extract token
-    const token = authHeader.split(" ")[1];
-
-    // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    // Store user information in request
-    req.user = decoded;
-
-    next();
-  } catch (error) {
-    return res.status(401).json({
-      success: false,
-      message: "Invalid or expired token",
-    });
-  }
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+  });
 };
 
-module.exports = authMiddleware;
+module.exports = errorMiddleware;
